@@ -19,6 +19,7 @@ $domain = $env:USERDNSDOMAIN
         $expression = "C:\Windows\System32\msiexec.exe /i $LapsPath ADDLOCAL=CSE,Management.PS /quiet"
         Invoke-Expression $expression
 #>
+#run as a member of schema admins group
     Import-module AdmPwd.PS  
     Update-AdmPwdADSchema 
 
