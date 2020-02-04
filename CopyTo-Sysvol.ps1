@@ -1,9 +1,9 @@
 <#
     .SYNOPSIS 
-    Run get-help -example CpyTo-Sysvol.ps1 for examples
+    Run get-help -example CopyTo-Sysvol.ps1 for examples
 
     .EXAMPLE
-        .\CopyTo-Sysvol.ps1 -FilesPath C:\LAPS -CustomSysvolPlacement -Verbose
+        .\CopyTo-Sysvol.ps1 -FilesPath C:\LAPS -DefaultSysvolPlacement -Verbose
         VERBOSE: Declared SYSVOL path: 'C:\Windows\Sysvol\'
         VERBOSE: Folder :'C:\Windows\Sysvol\\Sysvol\azureblog.pl\scripts' already exists
         VERBOSE: Copying files from path 'C:\LAPS' to 'C:\Windows\Sysvol\Sysvol\azureblog.pl\scripts' using Recurse mode
