@@ -1,7 +1,0 @@
-Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
-Tier 0 Replication Maintenance,Tier0ReplicationMaintenance,Security,Global,Tier 0 Replication Maintenance,"OU=Groups,OU=Tier0,OU=Admin",Members of this group are Tier 0 Replication Maintenance,
-Tier 1 Server Maintenance,Tier1ServerMaintenance,Security,Global,Tier 1 Server Maintenance,"OU=Groups,OU=Tier1,OU=Admin",Members of this group perform Tier 1 Server Maintenance,
-Service Desk Operators,ServiceDeskOperators,Security,Global,Service Desk Operators,"OU=Groups,OU=Tier2,OU=Admin",Members of this group are Service Desk Operators,
-Workstation Maintenance,WorkstationMaintenance,Security,Global,Workstation Maintenance,"OU=Groups,OU=Tier2,OU=Admin",Members of this group perform Workstation Maintenance,
-Tier 1 Admins,tier1admins,Security,Global,Tier 1 Admins,"OU=Groups,OU=Tier1,OU=Admin",Members of this group are Tier 1 Administrators,
-Tier 2 Admins,tier2admins,Security,Global,Tier 2 Admins,"OU=Groups,OU=Tier2,OU=Admin",Members of this group are Tier 2 Administrators,
