@@ -60,7 +60,7 @@ $OUs = @(
 .\Create-OU.ps1 -OUs $OUs -Verbose
 #endRegion
 
-#region Create Sub Tier 1 Servers OU's
+#region Create Sub Workstations OU's
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Desktops"; ParentOU = "ou=Workstations" }),
     $(New-Object PSObject -Property @{Name = "Kiosks"; ParentOU = "ou=Workstations" }),
