@@ -29,6 +29,6 @@ $List | ForEach-Object {
     $acl.AddAccessRule((New-Object System.DirectoryServices.ActiveDirectoryAccessRule $adGroup, "ReadProperty", "Allow", $guidmap["msFVE-KeyPackage"], "Descendents", $guidmap["msFVE-RecoveryInformation"]))
     $acl.AddAccessRule((New-Object System.DirectoryServices.ActiveDirectoryAccessRule $adGroup, "ReadProperty", "Allow", $guidmap["msFVE-RecoveryPassword"], "Descendents", $guidmap["msFVE-RecoveryInformation"]))
     $acl.AddAccessRule((New-Object System.DirectoryServices.ActiveDirectoryAccessRule $adGroup, "ReadProperty", "Allow", $guidmap["msFVE-VolumeGuid"], "Descendents", $guidmap["msFVE-RecoveryInformation"]))
-    Write-Verbose "Configuring User Permissions on '$ouPath' for group '$Group'"
+    Write-Verbose "Configuring Workstation Permissions on '$ouPath' for group '$Group'"
     Set-ACL -ACLObject $acl -Path ("AD:\" + ($ou.DistinguishedName))
 } 
