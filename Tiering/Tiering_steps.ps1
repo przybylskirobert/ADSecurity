@@ -47,9 +47,6 @@ $OUs = @(
     $(New-Object PSObject -Property @{Name = "Contacts"; ParentOU = "ou=Groups" })
 )
 .\Create-OU.ps1 -OUs $OUs -Verbose
-#endRegion
-
-#region Create Sub Tier 1 Servers OU's
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Application"; ParentOU = "ou=Tier 1 Servers" }),
     $(New-Object PSObject -Property @{Name = "Collaboration"; ParentOU = "ou=Tier 1 Servers" }),
@@ -58,9 +55,6 @@ $OUs = @(
     $(New-Object PSObject -Property @{Name = "Staging"; ParentOU = "ou=Tier 1 Servers" })
 )
 .\Create-OU.ps1 -OUs $OUs -Verbose
-#endRegion
-
-#region Create Sub Workstations OU's
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Desktops"; ParentOU = "ou=Workstations" }),
     $(New-Object PSObject -Property @{Name = "Kiosks"; ParentOU = "ou=Workstations" }),
@@ -89,16 +83,29 @@ $csv = Read-Host -Prompt "Please provide full path to Groups csv file"
 .\Create-Group.ps1 -CSVfile $csv -Verbose
 #endRegion
 
+
 #Region Create OU Delegation
 $List = @(
-    $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=User Accounts" })
+    $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=User Accounts" }),
+    $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Accounts,ou=Tier1,ou=Admin" }),
+    $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Service Accounts,ou=Tier1,ou=Admin" }),
+    $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Accounts,ou=Tier2,ou=Admin" }),
+    $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Service Accounts,ou=Tier2,ou=Admin" })
 )
 .\Set-OUUserPermissions.ps1 -list $list -Verbose 
 
 $List = @(
-    $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=Workstations" })
+    $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=Workstations" }),
+    $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Devices,ou=Tier1,ou=Admin" }),
+    $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Devices,ou=Tier2,ou=Admin" })
 )
 .\Set-OUWorkstationPermissions.ps1 -list $list -Verbose
+
+$List = @(
+    $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Groups,ou=Tier1,ou=Admin"}),
+    $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Groups,ou=Tier2,ou=Admin"})
+)
+.\Set-OUGroupPermissions.ps1 -list $list -Verbose
 
 $List = @(
     $(New-Object PSObject -Property @{Group = "WorkstationMaintenance"; OUPrefix = "OU=Quarantine" }),
@@ -117,10 +124,6 @@ $List = @(
 )
 .\Set-OUGPOPermissions.ps1 -list $list -Verbose
 
-$List = @(
-    $(New-Object PSObject -Property @{Group = "Tier1ServerMaintenance"; OUPrefix = "OU=Tier 1 Servers" })
-)
-.\Set-OUGPOPermissions.ps1 -list $list -Verbose
 #endRegion
 
 Set-Location $location
