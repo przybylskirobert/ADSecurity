@@ -1,7 +1,7 @@
 <#
     .Example
     $List = @(
-        $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=OU=Workstations"})
+        $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=Workstations"})
     .\Set-OUWorkstationPermissions.ps1 -list $list -Verbose
 #>
 
