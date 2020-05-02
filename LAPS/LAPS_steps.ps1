@@ -1,9 +1,11 @@
-Throw "this is not a robust file" 
+Throw "this is not a robust file"
+$location = Get-Location
+Set-Location C:\Tools\LAPS
 $dsnAME = (Get-ADDomain).DistinguishedName
 $domain = $env:USERDNSDOMAIN
 
 #Copy LAPS msi files to sysvol
-    c:\tools\CopyTo-Sysvol.ps1 -FilesPath C:\tools\LAPS -CustomSysvolPlacement -Verbose
+    .\CopyTo-Sysvol.ps1 -FilesPath C:\tools\LAPS\LAPS -CustomSysvolPlacement -Verbose
 
 #schema extension with LAPS     #64 on DC LAB
         $lapsPath = "\\$Domain\SysVol\$Domain\Scripts\LAPS.x64.msi"
