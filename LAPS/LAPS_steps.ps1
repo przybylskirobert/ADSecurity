@@ -8,7 +8,7 @@ $domain = $env:USERDNSDOMAIN
     .\CopyTo-Sysvol.ps1 -FilesPath C:\tools\LAPS\LAPS -CustomSysvolPlacement -Verbose
 
 #schema extension with LAPS     #64 on DC LAB
-        $lapsPath = "\\$Domain\SysVol\$Domain\Scripts\LAPS.x64.msi"
+        $lapsPath = "\\$Domain\SysVol\$Domain\Scripts\LAPs\LAPS.x64.msi"
         $expression = "C:\Windows\System32\msiexec.exe /i $LapsPath ADDLOCAL=CSE,Management,Management.UI,Management.PS,Management.ADMX /quiet"
         Invoke-Expression $expression
 <#
