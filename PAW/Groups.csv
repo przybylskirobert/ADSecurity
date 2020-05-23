@@ -1,0 +1,5 @@
+Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
+Tier0 PAW Users,Tier0PAWUsers,Security,Global,Tier0 PAW Users,"OU=Groups,OU=Tier0,OU=Admin",Members of this group are permitted to log onto Tier0 Privileged Access Workstations,,
+Tier0 PAW Maintenance,Tier0PAWMaint,Security,Global,Tier0 PAW Maintenance,"OU=Groups,OU=Tier0,OU=Admin",Members of this group maintain and support Tier0 Privileged Access Workstations,,
+Tier1 PAW Users,Tier1PAWUsers,Security,Global,Tier1 PAW Users,"OU=Groups,OU=Tier1,OU=Admin",Members of this group are permitted to log onto Tier1 Privileged Access Workstations,,
+Tier1 PAW Maintenance,Tier1PAWMaint,Security,Global,Tier1 PAW Maintenance,"OU=Groups,OU=Tier1,OU=Admin",Members of this group maintain and support Tier1 Privileged Access Workstations,,

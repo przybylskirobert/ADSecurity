@@ -1,0 +1,7 @@
+Name,samAccountName,ParentOU,GroupMembership
+Tier0 PAW Maintenancer,tier0pawmaintenancer,"OU=Accounts,OU=Tier0,OU=Admin",Tier0PAWMaint
+Tier1 PAW Maintenancer,tier1pawmaintenancer,"OU=Accounts,OU=Tier1,OU=Admin",Tier1PAWMaint
+Tier0 PAW User,tier0pawuser,"OU=Accounts,OU=Tier0,OU=Admin","Tier0PAWUsers,Domain Admins"
+Tier1 PAW User,tier1pawuser,"OU=Accounts,OU=Tier1,OU=Admin","Tier1PAWUsers,Tier1ServerMaintenance"
+Tier2 SD User,tier2sduser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2ServiceDeskOperators"
+Tier2 WM User,tier2wmuser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2WorkstationMaintenance"
