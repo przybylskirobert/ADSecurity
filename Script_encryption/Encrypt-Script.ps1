@@ -27,7 +27,7 @@ else {
         break
     }
 }
-$credentialTest = ($Credential.GetNetworkCredential().Password).Lenght
+$credentialTest = ($Credential.GetNetworkCredential().Password).Length
 if ($credentialTest -eq $null) {
     Write-Error "Password lenght used is equeal 0"
     break
