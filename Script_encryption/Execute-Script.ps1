@@ -1,6 +1,6 @@
 <#
     .EXAMPLE
-    .\Execute-Script.ps1 -Path "C:\scripts\script.bin" -Credential (Get-credential)
+    .\Execute-Script.ps1 -BinFilePath "C:\scripts\script.bin" -Credential (Get-credential)
 #>
 
 param (
@@ -15,7 +15,7 @@ if ($testPath -eq $false) {
     Write-Error "Path '$BinFilePath' does not exists"
     break
 }
-$credentialTest = ($Credential.GetNetworkCredential().Password).Lenght
+$credentialTest = ($Credential.GetNetworkCredential().Password).Length
 if ($credentialTest -eq $null) {
     Write-Error "Password lenght used is equeal 0"
     break
