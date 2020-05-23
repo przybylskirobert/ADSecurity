@@ -1,7 +1,6 @@
 Throw "this is not a robust file" 
 $location = Get-Location
 Set-Location C:\Tools\PAW
-#zaq12WSXcde3
 
 #Region create Groups 
 $csv = Read-Host -Prompt "Please provide full path to Groups csv file"
@@ -52,31 +51,21 @@ gpmc.msc
     Get-ADComputer -Identity SRV01 | Move-ADObject -TargetPath "OU=Devices,OU=Tier0,OU=Admin,DC=Azureblog,DC=pl"
     Get-ADCOmputer -Identity W10
     Get-ADComputer -Identity SRV01
-    shutdown -r -t 00 /m W10
-    shutdown -r -t 00 /m SRV01
 #endregion
 
-#region Tier1PAWUser on SRV01
+#region Tier0PAWUser on SRV01
     whoami /groups
     net user testuser zaq12WSX /add
-
-#Proxy
     [System.Net.WebProxy]::GetDefaultProxy() | select address
 #endregion
 
-#region Tier1PAWMAintenancer on SRV01
+#region Tier0PAWMAintenancer on SRV01
     whoami /groups
     net user testuser zaq12WSX /add
     net user testuser
     net user testuser /del
-
-#Proxy
     [System.Net.WebProxy]::GetDefaultProxy() | select address
 #endregion
-
-#region Log on to W10
-    
-#end region
 
 Set-Location $location
 
