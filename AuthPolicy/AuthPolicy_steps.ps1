@@ -23,6 +23,20 @@ Write-Verbose "Adding computer '$($srv.name)' to group '$($group.name)'"
 Add-ADGroupMember -Identity $group -Members $srv
 #endregion
 
+#region import GPO
+$BackupPath = Read-Host -Prompt "Please provide full path to GPO backups"
+.\Import-GPO.ps1 -BackupPath $BackupPath -Verbose
+Set-Location C:\Tools\AuthPolicy
+#endregion
+
+
+#region Link gpo
+$GpoLinks = @(
+    $(New-Object PSObject -Property @{ Name = "KDC Support for claims"; OU = "OU=Domain Controllers"; Order = 2 ;LinkEnabled = 'YES'}),
+    $(New-Object PSObject -Property @{ Name = "Kerberos client support for claims" ; OU = ""; Order = 2 ;LinkEnabled = 'YES'})
+)
+.\Link-GpoToOU.ps1 -GpoLinks $GpoLinks -Verbose
+
 #Region AuthPolicy
 .\New-AuthenticationPolicy -GroupName "Tier1Servers" -PolicyName "Tier1Servers" -Description "Assigned principals can authenticate to tier-0 PAWs only" -UserTGTLifetimeMins 121
 #endregion
