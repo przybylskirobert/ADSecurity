@@ -7,13 +7,13 @@ This is my place where I'm putting all the scripts and config files regarding Ac
 ](https://www.azureblog.pl/2020/02/05/laps-deployment/)
 - [ADSEcurity/LAPS](https://github.com/przybylskirobert/ADSecurity/tree/master/LAPS)
 
--[AD Tiering model – how to deploy that
+- [AD Tiering model – how to deploy that
 ](https://www.azureblog.pl/2020/04/13/deploying-tiering/)
--[ADSEcurity/Tiering](https://github.com/przybylskirobert/ADSecurity/tree/master/Tiering)
+- [ADSEcurity/Tiering](https://github.com/przybylskirobert/ADSecurity/tree/master/Tiering)
 
--[PAW Security guide
+- [PAW Security guide
 ](https://www.azureblog.pl/2020/05/23/paw-security-guide/)
--[ADSEcurity/PAW](https://github.com/przybylskirobert/ADSecurity/tree/master/PAW)
+- [ADSEcurity/PAW](https://github.com/przybylskirobert/ADSecurity/tree/master/PAW)
 
--Authentication Policy post comming soon
--[ADSEcurity/AuthPolicy](https://github.com/przybylskirobert/ADSecurity/tree/master/AuthPolicy)
+- Authentication Policy post comming soon
+- [ADSEcurity/AuthPolicy](https://github.com/przybylskirobert/ADSecurity/tree/master/AuthPolicy)
