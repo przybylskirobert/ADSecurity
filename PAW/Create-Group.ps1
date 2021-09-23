@@ -15,7 +15,7 @@
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory=$True)] [string] $CSVfile
+    [string] $CSVfile
 )
 $dNC = (Get-ADRootDSE).defaultNamingContext
 $groups = Import-Csv $CSVfile
