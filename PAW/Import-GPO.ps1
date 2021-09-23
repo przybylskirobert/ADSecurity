@@ -1,4 +1,4 @@
-﻿<#
+<#
     .Example
     $BackupPath = Read-Host -Prompt "Please provide full path to GPO backups"
     .\Import-GPO.ps1 -BackupPath $BackupPath -Verbose
@@ -7,11 +7,11 @@
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory=$True)][string] $BackupPath,
-    [Parameter(Mandatory=$True)][string] $GPOMigrationTable
+    [Parameter(Mandatory = $True)][string] $BackupPath,
+    [string] $GPOMigrationTable
 )
 
-$backupList = Get-ChildItem -Path $BackupPath
+$backupList = Get-ChildItem -Path $BackupPath -Exclude "manifest.xml"
 Set-Location $BackupPath
 $location = Get-Location
 foreach ($item in $backupList){
@@ -24,6 +24,11 @@ foreach ($item in $backupList){
     $gpoName = $xmlFile.GPO.Name
     Write-Verbose "Importing new GPO '$gpoName' with GUID '$backupID'"
     Write-Verbose "Please remember to update proper groups in GPO settings"
-    Import-GPO -BackupId $backupID -TargetName $gpoName -Path $BackupPath -MigrationTable $GPOMigrationTable -CreateIfNeeded
+    if ($GPOMigrationTable -ne $null) {
+        Import-GPO -BackupId $backupID -TargetName $gpoName -Path $BackupPath -CreateIfNeeded
+    }
+    else {
+        Import-GPO -BackupId $backupID -TargetName $gpoName -Path $BackupPath -MigrationTable $GPOMigrationTable -CreateIfNeeded
+    }    
     Set-Location $location
 }
