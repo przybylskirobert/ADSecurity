@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
 Tier 0 Replication Maintenance,Tier0ReplicationMaintenance,Security,Global,Tier 0 Replication Maintenance,"OU=Groups,OU=Tier0,OU=Admin",Members of this group are Tier 0 Replication Maintenance,
 Tier 1 Server Maintenance,Tier1ServerMaintenance,Security,Global,Tier 1 Server Maintenance,"OU=Groups,OU=Tier1,OU=Admin",Members of this group perform Tier 1 Server Maintenance,
@@ -14,3 +15,12 @@ Tier 0 Servers,Tier0Servers,Security,Global,Tier0 Servers,"OU=Groups,OU=Tier0,OU
 Tier 0 Sync Servers,Tier0SyncServers,Security,Global,Tier0 Sync Servers,"OU=Groups,OU=Tier0,OU=Admin",Group that contain all Tier 0 synchronisation servers,
 Tier 0 Physical Access,Tier0PhysicalAccess,Security,Global,Tier0PhysicalAccess,"OU=Groups,OU=Tier0,OU=Admin",,
 Tier 0 Physical DC,Tier0PhysicalDC,Security,Global,Tier0PhysicalDC,"OU=Groups,OU=Tier0,OU=Admin",,
+=======
+Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
+Tier 0 Replication Maintenance,Tier0ReplicationMaintenance,Security,Global,Tier 0 Replication Maintenance,"OU=Groups,OU=Tier0,OU=Admin",Members of this group are Tier 0 Replication Maintenance,
+Tier 1 Server Maintenance,Tier1ServerMaintenance,Security,Global,Tier 1 Server Maintenance,"OU=Groups,OU=Tier1,OU=Admin",Members of this group perform Tier 1 Server Maintenance,
+Service Desk Operators,ServiceDeskOperators,Security,Global,Service Desk Operators,"OU=Groups,OU=Tier2,OU=Admin",Members of this group are Service Desk Operators,
+Workstation Maintenance,WorkstationMaintenance,Security,Global,Workstation Maintenance,"OU=Groups,OU=Tier2,OU=Admin",Members of this group perform Workstation Maintenance,
+Tier 1 Admins,tier1admins,Security,Global,Tier 1 Admins,"OU=Groups,OU=Tier1,OU=Admin",Members of this group are Tier 1 Administrators,
+Tier 2 Admins,tier2admins,Security,Global,Tier 2 Admins,"OU=Groups,OU=Tier2,OU=Admin",Members of this group are Tier 2 Administrators,
+>>>>>>> 07c1c14 (Other section added)
