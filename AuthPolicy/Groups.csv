@@ -1,2 +1,0 @@
-Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
-Tier1 Servers,Tier1Servers,Security,Global,Tier1 Servers,"OU=Groups,OU=Tier1,OU=Admin",Group that contain all Tier 1 servers,
