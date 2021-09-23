@@ -3,7 +3,9 @@ $location = Get-Location
 Set-Location C:\Tools\PAW
 
 #Region create Groups 
-$csv = Read-Host -Prompt "Please provide full path to Groups csv file"
+$csv = Read-Host -Prompt "Please provide full path to Admin Groups csv file"
+.\Create-Group.ps1 -CSVfile $csv -Verbose
+$csv = Read-Host -Prompt "Please provide full path to Standard Groups csv file"
 .\Create-Group.ps1 -CSVfile $csv -Verbose
 #endRegion
 
