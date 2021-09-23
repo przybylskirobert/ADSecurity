@@ -1,7 +1,28 @@
-Name,samAccountName,ParentOU,GroupMembership
-Tier0 PAW Maintenancer,tier0pawmaintenancer,"OU=Accounts,OU=Tier0,OU=Admin",Tier0PAWMaint
-Tier1 PAW Maintenancer,tier1pawmaintenancer,"OU=Accounts,OU=Tier1,OU=Admin",Tier1PAWMaint
-Tier0 PAW User,tier0pawuser,"OU=Accounts,OU=Tier0,OU=Admin","Tier0PAWUsers,Domain Admins"
-Tier1 PAW User,tier1pawuser,"OU=Accounts,OU=Tier1,OU=Admin","Tier1PAWUsers,Tier1ServerMaintenance"
-Tier2 SD User,tier2sduser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2ServiceDeskOperators"
-Tier2 WM User,tier2wmuser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2WorkstationMaintenance"
+Name,samAccountName,ParentOU,GroupMembership,Enabled
+Robert Przybylski,robert.przybylski,"OU=Accounts,OU=Tier0,OU=Admin","Domain Admins",True
+Tier0 PAW Maintenancer,tier0pawmaintenancer,"OU=Accounts,OU=Tier0,OU=Admin",Tier0PAWMaint,True
+Tier1 PAW Maintenancer,tier1pawmaintenancer,"OU=Accounts,OU=Tier1,OU=Admin",Tier1PAWMaint,True
+Tier0 PAW User,tier0pawuser,"OU=Accounts,OU=Tier0,OU=Admin","Tier0PAWUsers,Domain Admins",True
+Tier1 PAW User,tier1pawuser,"OU=Accounts,OU=Tier1,OU=Admin","Tier1PAWUsers,Tier1ServerMaintenance",True
+Tier2 SD User,tier2sduser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2ServiceDeskOperators",True
+Tier2 WM User,tier2wmuser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2WorkstationMaintenance",True
+Bruce Banner,brucebanner,"ou=Enabled Users,ou=User Accounts","testGroup1",True
+Iron Man,ironman,,"OU=Accounts,OU=Tier2,OU=Admin","Tier2ServiceDeskOperators,Tier2WorkstationMaintenance,Tier2Admins",True
+Capitan America,capitanamerica,"ou=Enabled Users,ou=User Accounts","testGroup3",True
+Spider Man,spiderman,"ou=Disabled Users,ou=User Accounts","testGroup4",False
+Black Widow,blackwidow,"ou=Enabled Users,ou=User Accounts","testGroup1,DNSAdmins",True
+Thor,thor,"ou=Disabled Users,ou=User Accounts","testGroup2",False
+BlackPanter,blackpanter,"ou=Enabled Users,ou=User Accounts","testGroup3",True
+Clint Barton,clintbarton,"ou=Disabled Users,ou=User Accounts","testGroup4",False
+Im Groot,imgroot,"ou=Enabled Users,ou=User Accounts","testGroup1",True
+Doctor Strange,doctorstrange,"ou=Disabled Users,ou=User Accounts","testGroup2",False
+Star Lord,starlord,"OU=Accounts,OU=Tier1,OU=Admin","Tier1PAWUsers,Tier1ServerMaintenance,Tier1Admins",True
+Vision,vision,"ou=Disabled Users,ou=User Accounts","testGroup4",False
+Loki,loki,"ou=Enabled Users,ou=User Accounts","testGroup1",True
+Bucky Barnes,buckybarnes,"ou=Disabled Users,ou=User Accounts","testGroup2",False
+Rocket Raccoon,rocketraccoon,"ou=Enabled Users,ou=User Accounts","testGroup3",True
+Nick Fury,nickfurry,"ou=Disabled Users,ou=User Accounts","testGroup4",False
+Drax,drax,"ou=Enabled Users,ou=User Accounts","testGroup1",True
+Sam Wilson,samwilson,"ou=Disabled Users,ou=User Accounts","testGroup2",False
+Justin Case,justincase,"ou=Enabled Users,ou=User Accounts","testGroup3,Tier0PhysicalAccess",True
+Replication Service,svc_replicator,"OU=Service Accounts,OU=Tier0,OU=Admin","Tier0ReplicationMaintenance".True
