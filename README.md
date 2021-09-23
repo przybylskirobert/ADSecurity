@@ -21,3 +21,6 @@ Privileged Access Workstations deployment
 Authentication Policy deployment
 - Authentication Policy post comming soon
 - [ADSEcurity/AuthPolicy](https://github.com/przybylskirobert/ADSecurity/tree/master/AuthPolicy)
+
+Other scripts Section
+- [ADSEcurity/Other](https://github.com/przybylskirobert/ADSecurity/tree/master/Other)
