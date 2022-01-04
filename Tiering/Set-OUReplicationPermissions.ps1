@@ -29,6 +29,12 @@ $sitesDN = "CN=Sites," + $configCN
 $config = @($configCN, $schemaNC, $forestDnsZonesDN, $sitesDN)
 $List | ForEach-Object {
     $group = $_.Group
+    if ($_.OUPrefix -eq ""){
+        $aclPath = $domain.DistinguishedName
+    }
+    else {
+        $aclPath = $_.OUPrefix + "," + $domain.DistinguishedName
+    }
     $adGroup = New-Object System.Security.Principal.SecurityIdentifier (Get-ADGroup -Identity $group).SID
     foreach ($configEntry in $config) {
         $acl = Get-ACL -Path($configEntry)
@@ -40,7 +46,7 @@ $List | ForEach-Object {
             $acl.AddAccessRule((New-Object System.DirectoryServices.ActiveDirectoryAccessRule $adGroup, "ExtendedRight", "Allow", $extendedrightsmap["Monitor active directory Replication"], "Descendents"))
         }
         Write-Verbose "Configuring Replication Maintenance Role Delegation on '$configEntry' for group '$group'"
-        Set-ACL -ACLObject $acl -Path ("AD:\" + ($domain.DistinguishedName))
+        Set-ACL -ACLObject $acl -Path ("AD:\" + $aclPath)
     }
 }
 Set-Location $Location
