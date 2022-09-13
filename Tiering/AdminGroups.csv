@@ -9,7 +9,6 @@ Tier 2 Admins,tier2admins,Security,Global,Tier 2 Admins,"OU=Groups,OU=Tier2,OU=A
 Tier 0 PAW Users,Tier0PAWUsers,Security,Global,Tier0 PAW Users,"OU=Groups,OU=Tier0,OU=Admin",Members of this group are permitted to log onto Tier0 Privileged Access Workstations using normal accounts,,
 Tier 0 PAW Maintenance,Tier0PAWMaint,Security,Global,Tier0 PAW Maintenance,"OU=Groups,OU=Tier0,OU=Admin",Members of this group maintain and support Tier0 Privileged Access Workstations,,
 Tier 1 PAW Users,Tier1PAWUsers,Security,Global,Tier1 PAW Users,"OU=Groups,OU=Tier1,OU=Admin",Members of this group are permitted to log onto Tier1 Privileged Access Workstations using normal accounts,,
-Tier 1 PAW Computers,Tier1PAWComputers,Security,Global,Tier1 PAW Computers,"Group with members of the OU=Devices,OU=Tier0,OU=Admin, OU=Servers,OU=Tier0,OU=Admin, OU=DomainControlelrs",,
 Tier 1 Servers,Tier1Servers,Security,Global,Tier1 Servers,"OU=Groups,OU=Tier1,OU=Admin",Group that contain all Tier 1 servers,
 Tier 0 Servers,Tier0Servers,Security,Global,Tier0 Servers,"OU=Groups,OU=Tier0,OU=Admin",Group that contain all Tier 0 servers,
 Tier 0 Sync Servers,Tier0SyncServers,Security,Global,Tier0 Sync Servers,"OU=Groups,OU=Tier0,OU=Admin",Group that contain all Tier 0 synchronisation servers,
