@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
 Test Group 1,testgroup1,Security,Global,Test Group 1,"ou=Security Groups,OU=Groups",Group with random members,
 Test Group 2,testgroup2,Security,Global,Test Group 2,"ou=Security Groups,OU=Groups",Group with random members,
 Test Group 3,testgroup3,Security,Global,Test Group 3,"ou=Security Groups,OU=Groups",Group with random members,
 Test Group 4,testgroup4,Security,Global,Test Group 4,"ou=Security Groups,OU=Groups",Group with random members,
-=======
-Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
-Test Group 1, testgroup1,Security,Global,Group 1,"ou=Security Group,OU=Groups",Group with members of the first 10 users
-Test Group 2, testgroup1,Security,Global,Group 1,"ou=Security Group,OU=Groups",Group with members of the first 10-20 users
-Test Group 3, testgroup1,Security,Global,Group 1,"ou=Security Group,OU=Groups",Group with members of the first 20-30 users
-Test Group 4, testgroup1,Security,Global,Group 1,"ou=Security Group,OU=Groups",Group with members of the first 30-40 users
->>>>>>> 07c1c14 (Other section added)
+
