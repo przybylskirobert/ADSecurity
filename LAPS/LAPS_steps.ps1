@@ -3,7 +3,7 @@ $location = Get-Location
 Set-Location C:\Tools\LAPS
 $dsnAME = (Get-ADDomain).DistinguishedName
 $domain = $env:USERDNSDOMAIN
-
+Throw "Please download LAPS from aka.ms/laps and put the msi files into the C:\Tools\LAPS\LAPS"
 #Copy LAPS msi files to sysvol
     .\CopyTo-Sysvol.ps1 -FilesPath C:\tools\LAPS\LAPS -CustomSysvolPlacement -Verbose
 
