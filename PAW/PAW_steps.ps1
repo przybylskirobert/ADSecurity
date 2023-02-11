@@ -34,7 +34,7 @@ $csv = Read-Host -Prompt "Please provide full path to Users csv file"
         $(New-Object PSObject -Property @{ Name = "Tier0 Restrict Server Logon" ; OU = "OU=Devices,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier1 Restrict Server Logon" ; OU = "OU=Devices,OU=Tier1,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier1 Restrict Server Logon" ; OU = "OU=Tier 1 Servers"; Order = 1 ;LinkEnabled = 'YES'}),
-        $(New-Object PSObject -Property @{ Name = "Tier2 Restrict Workstation Logon" ; OU = "OU=Devices,OU=Tier2,OU=Admins"; Order = 1 ;LinkEnabled = 'YES'}),
+        $(New-Object PSObject -Property @{ Name = "Tier2 Restrict Workstation Logon" ; OU = "OU=Devices,OU=Tier2,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier2 Restrict Workstation Logon" ; OU = "OU=Workstations"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier0 PAW Configuration - Computer" ; OU = "OU=Devices,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier0 PAW Configuration - User" ; OU = "OU=Accounts,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'No'}),
