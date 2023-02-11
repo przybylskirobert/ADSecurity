@@ -25,4 +25,4 @@ Nick Fury,nickfurry,"ou=Disabled Users,ou=User Accounts","testGroup4",False
 Drax,drax,"ou=Enabled Users,ou=User Accounts","testGroup1",True
 Sam Wilson,samwilson,"ou=Disabled Users,ou=User Accounts","testGroup2",False
 Justin Case,justincase,"ou=Enabled Users,ou=User Accounts","testGroup3,Tier0PhysicalAccess",True
-Replication Service,svc_replicator,"OU=Service Accounts,OU=Tier0,OU=Admin","Tier0ReplicationMaintenance".True
+Replication Service,svc_replicator,"OU=Service Accounts,OU=Tier0,OU=Admin","Tier0ReplicationMaintenance",True
