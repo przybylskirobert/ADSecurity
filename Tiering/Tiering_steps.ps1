@@ -88,7 +88,7 @@ $csv = Read-Host -Prompt "Please provide full path to Standard Groups csv file"
 
 #Region Create OU Delegation
 $List = @(
-    $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=User Accounts" }),
+    $(New-Object PSObject -Property @{Group = "Tier2ServiceDeskOperators"; OUPrefix = "OU=User Accounts" }),
     $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Accounts,ou=Tier1,ou=Admin" }),
     $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Service Accounts,ou=Tier1,ou=Admin" }),
     $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Accounts,ou=Tier2,ou=Admin" }),
@@ -97,7 +97,7 @@ $List = @(
 .\Set-OUUserPermissions.ps1 -list $list -Verbose 
 
 $List = @(
-    $(New-Object PSObject -Property @{Group = "ServiceDeskOperators"; OUPrefix = "OU=Workstations" }),
+    $(New-Object PSObject -Property @{Group = "Tier2ServiceDeskOperators"; OUPrefix = "OU=Workstations" }),
     $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Devices,ou=Tier1,ou=Admin" }),
     $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Devices,ou=Tier2,ou=Admin" })
 )
@@ -110,8 +110,8 @@ $List = @(
 .\Set-OUGroupPermissions.ps1 -list $list -Verbose
 
 $List = @(
-    $(New-Object PSObject -Property @{Group = "WorkstationMaintenance"; OUPrefix = "OU=Quarantine" }),
-    $(New-Object PSObject -Property @{Group = "WorkstationMaintenance"; OUPrefix = "OU=Workstations" }),
+    $(New-Object PSObject -Property @{Group = "Tier2Tier2WorkstationMaintenance"; OUPrefix = "OU=Quarantine" }),
+    $(New-Object PSObject -Property @{Group = "Tier2WorkstationMaintenance"; OUPrefix = "OU=Workstations" }),
     $(New-Object PSObject -Property @{Group = "Tier1ServerMaintenance"; OUPrefix = "OU=Tier 1 Servers" })
 )
 .\Set-OUComputerPermissions.ps1 -list $list -Verbose
