@@ -7,7 +7,7 @@ $dNC = (Get-ADRootDSE).defaultNamingContext
 $usrDN = '"' + "OU=Enabled Users,OU=User Accounts," + $dNc + '"'
 redirusr $usrDN
 $cmpDN = '"' + "OU=Quarantine," + $dNc + '"'
-redircmp 
+redircmp $cmpDN
 #endregion
 
 #region Sites
