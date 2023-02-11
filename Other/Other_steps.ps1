@@ -22,7 +22,7 @@ New-ADReplicationSubnet -Name $subnet -Site "HQ"
 
 #region KDS Root Key
 add-kdsrootkey
-#add-kdsrootkey �effectivetime ((get-date).addhours(-10))
+#add-kdsrootkey -effectivetime ((get-date).addhours(-10))
 #endregion
 
 #password policies
