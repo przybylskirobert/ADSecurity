@@ -68,6 +68,6 @@ if ($filesPathTest -eq $true) {
 }
 
 Write-Verbose "Copying files from path '$FilesPath' to '$scriptsPath' using Recurse mode"
-Copy-Item -Path $FilesPath -Destination $scriptsPath -Recurse -Force -Include "*.msi"
+Copy-Item -Path $FilesPath -Destination $scriptsPath -Recurse -Force
 
 Get-ChildItem -Path $FilesPath
