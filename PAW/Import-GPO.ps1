@@ -24,7 +24,7 @@ foreach ($item in $backupList){
     $gpoName = $xmlFile.GPO.Name
     Write-Verbose "Importing new GPO '$gpoName' with GUID '$backupID'"
     Write-Verbose "Please remember to update proper groups in GPO settings"
-    if ($GPOMigrationTable -ne $null) {
+    if ($GPOMigrationTable -eq $null) {
         Import-GPO -BackupId $backupID -TargetName $gpoName -Path $BackupPath -CreateIfNeeded
     }
     else {
