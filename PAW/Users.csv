@@ -7,7 +7,7 @@ Tier1 PAW User,tier1pawuser,"OU=Accounts,OU=Tier1,OU=Admin","Tier1PAWUsers,Tier1
 Tier2 SD User,tier2sduser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2ServiceDeskOperators",True
 Tier2 WM User,tier2wmuser,"OU=Accounts,OU=Tier2,OU=Admin","Tier2WorkstationMaintenance",True
 Bruce Banner,brucebanner,"ou=Enabled Users,ou=User Accounts","testGroup1",True
-Iron Man,ironman,,"OU=Accounts,OU=Tier2,OU=Admin","Tier2ServiceDeskOperators,Tier2WorkstationMaintenance,Tier2Admins",True
+Iron Man,ironman,"OU=Accounts,OU=Tier2,OU=Admin","Tier2ServiceDeskOperators,Tier2WorkstationMaintenance,Tier2Admins",True
 Capitan America,capitanamerica,"ou=Enabled Users,ou=User Accounts","testGroup3",True
 Spider Man,spiderman,"ou=Disabled Users,ou=User Accounts","testGroup4",False
 Black Widow,blackwidow,"ou=Enabled Users,ou=User Accounts","testGroup1,DNSAdmins",True
