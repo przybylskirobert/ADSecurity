@@ -26,12 +26,14 @@ $csv = Read-Host -Prompt "Please provide full path to Users csv file"
 #region Link gpo
     $GpoLinks = @(
         $(New-Object PSObject -Property @{ Name = "Do Not Display Logon Information" ; OU = "OU=Devices,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
+        $(New-Object PSObject -Property @{ Name = "Do Not Display Logon Information" ; OU = "OU=Tier0 Servers,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Do Not Display Logon Information" ; OU = "OU=Devices,OU=Tier1,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Do Not Display Logon Information" ; OU = "OU=Devices,OU=Tier2,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Do Not Display Logon Information" ; OU = "OU=Tier 1 Servers"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Do Not Display Logon Information" ; OU = "OU=Workstations"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Restrict Quarantine Logon" ; OU = "OU=Quarantine"; Order = 1 ;LinkEnabled = 'YES'}),
-        $(New-Object PSObject -Property @{ Name = "Tier0 Restrict Server Logon" ; OU = "OU=Devices,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
+        $(New-Object PSObject -Property @{ Name = "Tier0 Restrict Server Logon" ; OU = "OU=Devices,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),   
+        $(New-Object PSObject -Property @{ Name = "Tier0 Restrict Server Logon" ; OU = "OU=Tier0 Servers,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier1 Restrict Server Logon" ; OU = "OU=Devices,OU=Tier1,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier1 Restrict Server Logon" ; OU = "OU=Tier 1 Servers"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "Tier2 Restrict Workstation Logon" ; OU = "OU=Devices,OU=Tier2,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
