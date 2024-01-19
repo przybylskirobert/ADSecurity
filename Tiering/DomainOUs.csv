@@ -1,0 +1,38 @@
+Name,ParentOU
+Admin,
+Groups,
+Tier 1 Servers,
+Workstations,
+User Accounts,
+Quarantine,
+Tier0,ou=Admin
+Tier1,ou=Admin
+Tier2,ou=Admin
+Accounts,"ou=Tier0,ou=Admin"
+Groups,"ou=Tier0,ou=Admin"
+Service Accounts,"ou=Tier0,ou=Admin"
+Devices,"ou=Tier0,ou=Admin"
+Tier0 Servers,"ou=Tier0,ou=Admin"
+Synchronisation,"ou=Tier0 Servers,ou=Tier0,ou=Admin"
+Accounts,"ou=Tier1,ou=Admin"
+Groups,"ou=Tier1,ou=Admin"
+Service Accounts,"ou=Tier1,ou=Admin"
+Devices,"ou=Tier1,ou=Admin"
+Accounts,"ou=Tier2,ou=Admin"
+Groups,"ou=Tier2,ou=Admin"
+Service Accounts,"ou=Tier2,ou=Admin"
+Devices,"ou=Tier2,ou=Admin"
+Security Groups,ou=Groups
+Distribution Groups,ou=Groups
+Contacts,ou=Groups
+Application,ou=Tier 1 Servers
+Collaboration,ou=Tier 1 Servers
+Database,ou=Tier 1 Servers
+Messaging,ou=Tier 1 Servers
+Staging,ou=Tier 1 Servers
+Desktops,ou=Workstations
+Kiosks,ou=Workstations
+Laptops,ou=Workstations
+Staging,ou=Workstations
+Enabled Users,ou=User Accounts
+Disabled Users,ou=User Accounts

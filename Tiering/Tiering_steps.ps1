@@ -1,9 +1,13 @@
 throw "This is not a robus script"
 $location = Get-Location
-Set-Location C:\Tools
+$dsnAME = (Get-ADDomain).DistinguishedName
+$dNC = (Get-ADRootDSE).defaultNamingContext
+$domain = $env:USERDNSDOMAIN
+$ScriptsLocation =  "C:\Tools\ADSecurity\Tiering"
+Set-Location $ScriptsLocation
 
 Import-Module ActiveDirectory
-$dNC = (Get-ADRootDSE).defaultNamingContext
+
 
 
 #region Create Top Level OU's
@@ -15,10 +19,10 @@ $OUs = @(
     $(New-Object PSObject -Property @{Name = "User accounts"; ParentOU = "" }),
     $(New-Object PSObject -Property @{Name = "Quarantine"; ParentOU = "" })
 )
-.\Create-OU.ps1 -OUs $OUs -Verbose
+.$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
 #endRegion 
 
-#region Create Sub Admin OU's
+#region Create Tiering OUs v1
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Tier0"; ParentOU = "ou=Admin" }),
     $(New-Object PSObject -Property @{Name = "Tier1"; ParentOU = "ou=Admin" }),
@@ -37,16 +41,15 @@ $OUs = @(
     $(New-Object PSObject -Property @{Name = "Service Accounts"; ParentOU = "ou=Tier2,ou=Admin" }),
     $(New-Object PSObject -Property @{Name = "Devices"; ParentOU = "ou=Tier2,ou=Admin" })
 )
-.\Create-OU.ps1 -OUs $OUs -Verbose
-#endRegion
+.$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
 
-#region Create Sub Groups OU's
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Security Groups"; ParentOU = "ou=Groups" }),
     $(New-Object PSObject -Property @{Name = "Distribution Groups"; ParentOU = "ou=Groups" }),
     $(New-Object PSObject -Property @{Name = "Contacts"; ParentOU = "ou=Groups" })
 )
-.\Create-OU.ps1 -OUs $OUs -Verbose
+.$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
+
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Application"; ParentOU = "ou=Tier 1 Servers" }),
     $(New-Object PSObject -Property @{Name = "Collaboration"; ParentOU = "ou=Tier 1 Servers" }),
@@ -54,23 +57,27 @@ $OUs = @(
     $(New-Object PSObject -Property @{Name = "Messaging"; ParentOU = "ou=Tier 1 Servers" }),
     $(New-Object PSObject -Property @{Name = "Staging"; ParentOU = "ou=Tier 1 Servers" })
 )
-.\Create-OU.ps1 -OUs $OUs -Verbose
+.$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
+
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Desktops"; ParentOU = "ou=Workstations" }),
     $(New-Object PSObject -Property @{Name = "Kiosks"; ParentOU = "ou=Workstations" }),
     $(New-Object PSObject -Property @{Name = "Laptops"; ParentOU = "ou=Workstations" }),
     $(New-Object PSObject -Property @{Name = "Staging"; ParentOU = "ou=Workstations" })
 )
-.\Create-OU.ps1 -OUs $OUs -Verbose
-#endRegion
+.$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
 
-#region Create Sub User Accounts OU's
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Enabled Users"; ParentOU = "ou=User Accounts" }),
     $(New-Object PSObject -Property @{Name = "Disabled Users"; ParentOU = "ou=User Accounts" })
 )
-.\Create-OU.ps1 -OUs $OUs -Verbose
+.$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
 #endRegion
+
+#create Tiering OUs v2 
+$domainOUSCsv = Import-Csv -Path "$ScriptsLocation\DomainOUs.csv"
+.$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $domainOUSCsv    
+#endregion
 
 #Region Block inheritance for PAW OUs
 Set-GpInheritance -Target "OU=Devices,OU=Tier0,OU=Admin,$dnc" -IsBlocked Yes | Out-Null
@@ -79,10 +86,10 @@ Set-GpInheritance -Target "OU=Devices,OU=Tier2,OU=Admin,$dnc" -IsBlocked Yes | O
 #endRegion
 
 #Region create Groups 
-$csv = Read-Host -Prompt "Please provide full path to Admin Groups csv file"
-.\Create-Group.ps1 -CSVfile $csv -Verbose
-$csv = Read-Host -Prompt "Please provide full path to Standard Groups csv file"
-.\Create-Group.ps1 -CSVfile $csv -Verbose
+$csv = "$ScriptsLocation\AdminGroups.csv"
+.$ScriptsLocation\Scripts\Create-Group.ps1 -CSVfile $csv
+$csv = "$ScriptsLocation\StandardGroups.csv"
+.$ScriptsLocation\Scripts\Create-Group.ps1 -CSVfile $csv
 #endRegion
 
 
@@ -94,37 +101,37 @@ $List = @(
     $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Accounts,ou=Tier2,ou=Admin" }),
     $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Service Accounts,ou=Tier2,ou=Admin" })
 )
-.\Set-OUUserPermissions.ps1 -list $list -Verbose 
+.$ScriptsLocation\Scripts\Set-OUUserPermissions.ps1 -list $list 
 
 $List = @(
     $(New-Object PSObject -Property @{Group = "Tier2ServiceDeskOperators"; OUPrefix = "OU=Workstations" }),
     $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Devices,ou=Tier1,ou=Admin" }),
     $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Devices,ou=Tier2,ou=Admin" })
 )
-.\Set-OUWorkstationPermissions.ps1 -list $list -Verbose
+.$ScriptsLocation\Scripts\Set-OUWorkstationPermissions.ps1 -list $list
 
 $List = @(
     $(New-Object PSObject -Property @{Group = "Tier1Admins"; OUPrefix = "OU=Groups,ou=Tier1,ou=Admin"}),
     $(New-Object PSObject -Property @{Group = "Tier2Admins"; OUPrefix = "OU=Groups,ou=Tier2,ou=Admin"})
 )
-.\Set-OUGroupPermissions.ps1 -list $list -Verbose
+.$ScriptsLocation\Scripts\Set-OUGroupPermissions.ps1 -list $list
 
 $List = @(
-    $(New-Object PSObject -Property @{Group = "Tier2Tier2WorkstationMaintenance"; OUPrefix = "OU=Quarantine" }),
+    $(New-Object PSObject -Property @{Group = "Tier2WorkstationMaintenance"; OUPrefix = "OU=Quarantine" }),
     $(New-Object PSObject -Property @{Group = "Tier2WorkstationMaintenance"; OUPrefix = "OU=Workstations" }),
     $(New-Object PSObject -Property @{Group = "Tier1ServerMaintenance"; OUPrefix = "OU=Tier 1 Servers" })
 )
-.\Set-OUComputerPermissions.ps1 -list $list -Verbose
+.$ScriptsLocation\Scripts\Set-OUComputerPermissions.ps1 -list $list
 
 $List = @(
     $(New-Object PSObject -Property @{Group = "Tier0ReplicationMaintenance"; OUPrefix = "" })
 )
-.\Set-OUReplicationPermissions.ps1 -list $list -Verbose
+.$ScriptsLocation\Scripts\Set-OUReplicationPermissions.ps1 -list $list
 
 $List = @(
     $(New-Object PSObject -Property @{Group = "Tier1ServerMaintenance"; OUPrefix = "OU=Tier 1 Servers" })
 )
-.\Set-OUGPOPermissions.ps1 -list $list -Verbose
+.$ScriptsLocation\Scripts\Set-OUGPOPermissions.ps1 -list $list
 
 #endRegion
 

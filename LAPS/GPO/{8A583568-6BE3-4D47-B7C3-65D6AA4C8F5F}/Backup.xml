@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (c) Microsoft Corporation.  All rights reserved. --><GroupPolicyBackupScheme bkp:version="2.0" bkp:type="GroupPolicyBackupTemplate" xmlns:bkp="http://www.microsoft.com/GroupPolicy/GPOOperations" xmlns="http://www.microsoft.com/GroupPolicy/GPOOperations">
+    <GroupPolicyObject><SecurityGroups><Group bkp:Source="FromDACL"><Sid><![CDATA[S-1-5-21-3866420285-3461250396-184685434-519]]></Sid><SamAccountName><![CDATA[Enterprise Admins]]></SamAccountName><Type><![CDATA[UniversalGroup]]></Type><NetBIOSDomainName><![CDATA[MVP]]></NetBIOSDomainName><DnsDomainName><![CDATA[mvp.azureblog.pl]]></DnsDomainName><UPN><![CDATA[Enterprise Admins@mvp.azureblog.pl]]></UPN></Group><Group bkp:Source="FromDACL"><Sid><![CDATA[S-1-5-21-3866420285-3461250396-184685434-512]]></Sid><SamAccountName><![CDATA[Domain Admins]]></SamAccountName><Type><![CDATA[GlobalGroup]]></Type><NetBIOSDomainName><![CDATA[MVP]]></NetBIOSDomainName><DnsDomainName><![CDATA[mvp.azureblog.pl]]></DnsDomainName><UPN><![CDATA[Domain Admins@mvp.azureblog.pl]]></UPN></Group></SecurityGroups><FilePaths><Path><![CDATA[\\mvp.azureblog.pl\SYSVOL\mvp.azureblog.pl\scripts\LAPS]]></Path></FilePaths><GroupPolicyCoreSettings><ID><![CDATA[{A67CA9F7-A79B-4487-8906-4DF041098D38}]]></ID><Domain><![CDATA[mvp.azureblog.pl]]></Domain><SecurityDescriptor>01 00 04 9c 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 04 00 ec 00 08 00 00 00 05 02 28 00 00 01 00 00 01 00 00 00 8f fd ac ed b3 ff d1 11 b4 1d 00 a0 c9 68 f9 39 01 01 00 00 00 00 00 05 0b 00 00 00 00 00 24 00 ff 00 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 00 02 00 00 00 02 24 00 ff 00 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 00 02 00 00 00 02 24 00 ff 00 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 07 02 00 00 00 02 14 00 94 00 02 00 01 01 00 00 00 00 00 05 09 00 00 00 00 02 14 00 94 00 02 00 01 01 00 00 00 00 00 05 0b 00 00 00 00 02 14 00 ff 00 0f 00 01 01 00 00 00 00 00 05 12 00 00 00 00 0a 14 00 ff 00 0f 00 01 01 00 00 00 00 00 03 00 00 00 00</SecurityDescriptor><DisplayName><![CDATA[LAPSInstallation-v1.0]]></DisplayName><Options><![CDATA[1]]></Options><UserVersionNumber><![CDATA[65537]]></UserVersionNumber><MachineVersionNumber><![CDATA[1114129]]></MachineVersionNumber><MachineExtensionGuids><![CDATA[[{C6DC5466-785A-11D2-84D0-00C04FB169F7}{942A8E4F-A261-11D1-A760-00C04FB9603F}][{D76B9641-3288-4F75-942D-087DE603E3EA}{D02B1F72-3407-48AE-BA88-E8213C6761F1}]]]></MachineExtensionGuids><UserExtensionGuids/><WMIFilter/></GroupPolicyCoreSettings> 
+        <GroupPolicyExtension bkp:ID="{35378EAC-683F-11D2-A89A-00C04FBBCFA2}" bkp:DescName="Registry">
+            <FSObjectFile bkp:Path="%GPO_MACH_FSPATH%\registry.pol" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\registry.pol" bkp:Location="DomainSysvol\GPO\Machine\registry.pol"/>
+            
+            <FSObjectFile bkp:Path="%GPO_FSPATH%\Adm\*.*" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Adm\*.*"/>
+        </GroupPolicyExtension>
+        
+        
+        
+        
+        
+        
+        
+        
+        <GroupPolicyExtension bkp:ID="{c6dc5466-785a-11d2-84d0-00c04fb169f7}" bkp:DescName="Software Installation">
+            
+        <DSObject bkp:Path="cn=Class Store,%GPO_MACH_DSPATH%" bkp:ObjectClass="classStore" bkp:SourceExpandedPath="cn=Class Store,cn=Machine,cn={A67CA9F7-A79B-4487-8906-4DF041098D38},CN=Policies,CN=System,DC=mvp,DC=azureblog,DC=pl">
+                <DSObject bkp:Path="cn=Packages,cn=Class Store,%GPO_MACH_DSPATH%" bkp:ObjectClass="classStore" bkp:SourceExpandedPath="cn=Packages,cn=Class Store,cn=Machine,cn={A67CA9F7-A79B-4487-8906-4DF041098D38},CN=Policies,CN=System,DC=mvp,DC=azureblog,DC=pl">
+                    <DSObject bkp:Path="*,cn=Packages,cn=Class Store,%GPO_MACH_DSPATH%" bkp:ObjectClass="packageRegistration" bkp:SourceExpandedPath="*,cn=Packages,cn=Class Store,cn=Machine,cn={A67CA9F7-A79B-4487-8906-4DF041098D38},CN=Policies,CN=System,DC=mvp,DC=azureblog,DC=pl" bkp:ReEvaluateFunction="SIProcessAllPackageObjects"><DSObject bkp:ObjectClass="packageRegistration" bkp:Path="CN=9a3f528c-d8e7-449f-a9ef-7cdd4baa564b,CN=Packages,CN=Class Store,%GPO_MACH_DSPATH%" bkp:SourceExpandedPath="CN=9a3f528c-d8e7-449f-a9ef-7cdd4baa564b,CN=Packages,CN=Class Store,cn=Machine,cn={A67CA9F7-A79B-4487-8906-4DF041098D38},CN=Policies,CN=System,DC=mvp,DC=azureblog,DC=pl" bkp:ReEvaluateFunction="SIProcessPackageObject"><FSObjectFile bkp:Path="%GPO_MACH_FSPATH%\Applications\{CB506314-48D4-420C-B7A0-20B98E314140}.aas" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Applications\{CB506314-48D4-420C-B7A0-20B98E314140}.aas" bkp:Location="DomainSysvol\GPO\Machine\Applications\{CB506314-48D4-420C-B7A0-20B98E314140}.aas"/>
+                        <SecurityDescriptor>01 00 04 8c 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 04 00 14 01 0a 00 00 00 00 00 24 00 ff 01 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 00 02 00 00 00 00 14 00 94 00 02 00 01 01 00 00 00 00 00 05 0b 00 00 00 00 00 14 00 ff 01 0f 00 01 01 00 00 00 00 00 05 12 00 00 00 05 12 28 00 00 01 00 00 01 00 00 00 8f fd ac ed b3 ff d1 11 b4 1d 00 a0 c9 68 f9 39 01 01 00 00 00 00 00 05 0b 00 00 00 00 12 24 00 ff 00 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 00 02 00 00 00 12 24 00 ff 00 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 07 02 00 00 00 12 14 00 94 00 02 00 01 01 00 00 00 00 00 05 09 00 00 00 00 12 14 00 94 00 02 00 01 01 00 00 00 00 00 05 0b 00 00 00 00 12 14 00 ff 00 0f 00 01 01 00 00 00 00 00 05 12 00 00 00 00 1a 14 00 ff 00 0f 00 01 01 00 00 00 00 00 03 00 00 00 00</SecurityDescriptor>
+                        <DSAttributeBinary bkp:DSAttrName="objectGUID"><DSValue><![CDATA[af fa 8a a0 6d ee ae 40 97 aa 5a 55 61 90 48 87]]></DSValue></DSAttributeBinary>
+                        <DSAttributeMultiString bkp:DSAttrName="cOMClassID"><DSValue><![CDATA[00000000-0000-0000-0000-000000000000:0]]></DSValue></DSAttributeMultiString>
+                        <DSAttributeMultiString bkp:DSAttrName="cOMProgID"/>
+                        <DSAttributeMultiString bkp:DSAttrName="fileExtPriority"/>
+                        <DSAttributeMultiDWORD bkp:DSAttrName="localeID"><DSValue><![CDATA[1033]]></DSValue></DSAttributeMultiDWORD>
+                        <DSAttributeMultiDWORD bkp:DSAttrName="machineArchitecture"><DSValue><![CDATA[150996226]]></DSValue></DSAttributeMultiDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="versionNumberHi"><DSValue><![CDATA[6]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="versionNumberLo"><DSValue><![CDATA[2]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="revision"><DSValue><![CDATA[0]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="packageType"><DSValue><![CDATA[5]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="packageFlags"><DSValue><![CDATA[2684374128]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeString bkp:DSAttrName="packageName"><DSValue><![CDATA[Local Administrator Password Solution]]></DSValue></DSAttributeString>
+                        <DSAttributeString bkp:DSAttrName="msiScriptPath"><DSValue><![CDATA[\\mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Applications\{CB506314-48D4-420C-B7A0-20B98E314140}.aas]]></DSValue></DSAttributeString>
+                        <DSAttributeString bkp:DSAttrName="msiScriptName"><DSValue><![CDATA[A]]></DSValue></DSAttributeString>
+                        <DSAttributeDWORD bkp:DSAttrName="msiScriptSize"/>
+                        <DSAttributeMultiString bkp:DSAttrName="url"/>
+                        <DSAttributeString bkp:DSAttrName="setupCommand"/>
+                        <DSAttributeString bkp:DSAttrName="lastUpdateSequence"><DSValue><![CDATA[20210923103528]]></DSValue></DSAttributeString>
+                        <DSAttributeMultiString bkp:DSAttrName="msiFileList"><DSValue><![CDATA[0:\\mvp.azureblog.pl\SYSVOL\mvp.azureblog.pl\scripts\LAPS\LAPS.x64.msi]]></DSValue></DSAttributeMultiString>
+                        <DSAttributeMultiString bkp:DSAttrName="categories"/>
+                        <DSAttributeMultiString bkp:DSAttrName="canUpgradeScript"/>
+                        <DSAttributeDWORD bkp:DSAttrName="installUiLevel"><DSValue><![CDATA[5]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeBinary bkp:DSAttrName="msiScript"/>
+                        <DSAttributeString bkp:DSAttrName="displayName"><DSValue><![CDATA[Local Administrator Password Solution]]></DSValue></DSAttributeString>
+                        <DSAttributeBinary bkp:DSAttrName="productCode"><DSValue><![CDATA[7b ca e2 97 57 b6 f7 4f a6 db 30 ec c7 3e 1e 28]]></DSValue></DSAttributeBinary>
+                        <DSAttributeBinary bkp:DSAttrName="upgradeProductCode"><DSValue><![CDATA[77 1f 46 a6 33 08 f5 48 a8 a7 86 c3 bf b6 88 7a]]></DSValue></DSAttributeBinary>
+                        <DSAttributeString bkp:DSAttrName="Vendor"/>
+                    </DSObject><DSObject bkp:ObjectClass="packageRegistration" bkp:Path="CN=0d8ea4e6-c25a-4e6e-9058-1f28c9b287dd,CN=Packages,CN=Class Store,%GPO_MACH_DSPATH%" bkp:SourceExpandedPath="CN=0d8ea4e6-c25a-4e6e-9058-1f28c9b287dd,CN=Packages,CN=Class Store,cn=Machine,cn={A67CA9F7-A79B-4487-8906-4DF041098D38},CN=Policies,CN=System,DC=mvp,DC=azureblog,DC=pl" bkp:ReEvaluateFunction="SIProcessPackageObject"><FSObjectFile bkp:Path="%GPO_MACH_FSPATH%\Applications\{B317FB0C-A29C-41BA-9030-686D4920EFFC}.aas" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Applications\{B317FB0C-A29C-41BA-9030-686D4920EFFC}.aas" bkp:Location="DomainSysvol\GPO\Machine\Applications\{B317FB0C-A29C-41BA-9030-686D4920EFFC}.aas"/>
+                        <SecurityDescriptor>01 00 04 8c 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 04 00 14 01 0a 00 00 00 00 00 24 00 ff 01 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 00 02 00 00 00 00 14 00 94 00 02 00 01 01 00 00 00 00 00 05 0b 00 00 00 00 00 14 00 ff 01 0f 00 01 01 00 00 00 00 00 05 12 00 00 00 05 12 28 00 00 01 00 00 01 00 00 00 8f fd ac ed b3 ff d1 11 b4 1d 00 a0 c9 68 f9 39 01 01 00 00 00 00 00 05 0b 00 00 00 00 12 24 00 ff 00 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 00 02 00 00 00 12 24 00 ff 00 0f 00 01 05 00 00 00 00 00 05 15 00 00 00 3d e4 74 e6 5c 7d 4e ce 7a 13 02 0b 07 02 00 00 00 12 14 00 94 00 02 00 01 01 00 00 00 00 00 05 09 00 00 00 00 12 14 00 94 00 02 00 01 01 00 00 00 00 00 05 0b 00 00 00 00 12 14 00 ff 00 0f 00 01 01 00 00 00 00 00 05 12 00 00 00 00 1a 14 00 ff 00 0f 00 01 01 00 00 00 00 00 03 00 00 00 00</SecurityDescriptor>
+                        <DSAttributeBinary bkp:DSAttrName="objectGUID"><DSValue><![CDATA[08 05 8f ac 3c b0 f7 44 a8 b2 62 26 0c 53 61 17]]></DSValue></DSAttributeBinary>
+                        <DSAttributeMultiString bkp:DSAttrName="cOMClassID"><DSValue><![CDATA[00000000-0000-0000-0000-000000000000:0]]></DSValue></DSAttributeMultiString>
+                        <DSAttributeMultiString bkp:DSAttrName="cOMProgID"/>
+                        <DSAttributeMultiString bkp:DSAttrName="fileExtPriority"/>
+                        <DSAttributeMultiDWORD bkp:DSAttrName="localeID"><DSValue><![CDATA[1033]]></DSValue></DSAttributeMultiDWORD>
+                        <DSAttributeMultiDWORD bkp:DSAttrName="machineArchitecture"><DSValue><![CDATA[1282]]></DSValue></DSAttributeMultiDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="versionNumberHi"><DSValue><![CDATA[6]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="versionNumberLo"><DSValue><![CDATA[2]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="revision"><DSValue><![CDATA[0]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="packageType"><DSValue><![CDATA[5]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeDWORD bkp:DSAttrName="packageFlags"><DSValue><![CDATA[2684439664]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeString bkp:DSAttrName="packageName"><DSValue><![CDATA[Local Administrator Password Solution (2)]]></DSValue></DSAttributeString>
+                        <DSAttributeString bkp:DSAttrName="msiScriptPath"><DSValue><![CDATA[\\mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Applications\{B317FB0C-A29C-41BA-9030-686D4920EFFC}.aas]]></DSValue></DSAttributeString>
+                        <DSAttributeString bkp:DSAttrName="msiScriptName"><DSValue><![CDATA[A]]></DSValue></DSAttributeString>
+                        <DSAttributeDWORD bkp:DSAttrName="msiScriptSize"/>
+                        <DSAttributeMultiString bkp:DSAttrName="url"/>
+                        <DSAttributeString bkp:DSAttrName="setupCommand"/>
+                        <DSAttributeString bkp:DSAttrName="lastUpdateSequence"><DSValue><![CDATA[20210923103608]]></DSValue></DSAttributeString>
+                        <DSAttributeMultiString bkp:DSAttrName="msiFileList"><DSValue><![CDATA[0:\\mvp.azureblog.pl\SYSVOL\mvp.azureblog.pl\scripts\LAPS\LAPS.x86.msi]]></DSValue></DSAttributeMultiString>
+                        <DSAttributeMultiString bkp:DSAttrName="categories"/>
+                        <DSAttributeMultiString bkp:DSAttrName="canUpgradeScript"/>
+                        <DSAttributeDWORD bkp:DSAttrName="installUiLevel"><DSValue><![CDATA[5]]></DSValue></DSAttributeDWORD>
+                        <DSAttributeBinary bkp:DSAttrName="msiScript"/>
+                        <DSAttributeString bkp:DSAttrName="displayName"><DSValue><![CDATA[Local Administrator Password Solution (2)]]></DSValue></DSAttributeString>
+                        <DSAttributeBinary bkp:DSAttrName="productCode"><DSValue><![CDATA[11 cd ea f9 26 3a 93 46 a5 3e ea af ae ac c1 49]]></DSValue></DSAttributeBinary>
+                        <DSAttributeBinary bkp:DSAttrName="upgradeProductCode"><DSValue><![CDATA[77 1f 46 a6 33 08 f5 48 a8 a7 86 c3 bf b6 88 7a]]></DSValue></DSAttributeBinary>
+                        <DSAttributeString bkp:DSAttrName="Vendor"/>
+                    </DSObject>
+                        <SecurityDescriptor/>
+                        <DSAttributeBinary bkp:DSAttrName="objectGUID"/>
+                        <DSAttributeMultiString bkp:DSAttrName="cOMClassID"/>
+                        <DSAttributeMultiString bkp:DSAttrName="cOMProgID"/>
+                        <DSAttributeMultiString bkp:DSAttrName="fileExtPriority"/>
+                        <DSAttributeMultiDWORD bkp:DSAttrName="localeID"/>
+                        <DSAttributeMultiDWORD bkp:DSAttrName="machineArchitecture"/>
+                        <DSAttributeDWORD bkp:DSAttrName="versionNumberHi"/>
+                        <DSAttributeDWORD bkp:DSAttrName="versionNumberLo"/>
+                        <DSAttributeDWORD bkp:DSAttrName="revision"/>
+                        <DSAttributeDWORD bkp:DSAttrName="packageType"/>
+                        <DSAttributeDWORD bkp:DSAttrName="packageFlags"/>
+                        <DSAttributeString bkp:DSAttrName="packageName"/>
+                        <DSAttributeString bkp:DSAttrName="msiScriptPath"/>
+                        <DSAttributeString bkp:DSAttrName="msiScriptName"/>
+                        <DSAttributeDWORD bkp:DSAttrName="msiScriptSize"/>
+                        <DSAttributeMultiString bkp:DSAttrName="url"/>
+                        <DSAttributeString bkp:DSAttrName="setupCommand"/>
+                        <DSAttributeString bkp:DSAttrName="lastUpdateSequence"/>
+                        <DSAttributeMultiString bkp:DSAttrName="msiFileList"/>
+                        <DSAttributeMultiString bkp:DSAttrName="categories"/>
+                        <DSAttributeMultiString bkp:DSAttrName="canUpgradeScript"/>
+                        <DSAttributeDWORD bkp:DSAttrName="installUiLevel"/>
+                        <DSAttributeBinary bkp:DSAttrName="msiScript"/>
+                        <DSAttributeString bkp:DSAttrName="displayName"/>
+                        <DSAttributeBinary bkp:DSAttrName="productCode"/>
+                        <DSAttributeBinary bkp:DSAttrName="upgradeProductCode"/>
+                        <DSAttributeString bkp:DSAttrName="Vendor"/>
+                    </DSObject>
+                </DSObject>
+                <DSAttributeDWORD bkp:DSAttrName="appSchemaVersion"><DSValue><![CDATA[1740]]></DSValue></DSAttributeDWORD>
+                <DSAttributeString bkp:DSAttrName="extensionName"><DSValue><![CDATA[LAPSInstallation-v1.0]]></DSValue></DSAttributeString>
+                <DSAttributeString bkp:DSAttrName="description"><DSValue><![CDATA[Application Store]]></DSValue></DSAttributeString>
+                <DSAttributeExpandedString bkp:DSAttrName="displayName">
+                    <DSValue>LDAP://%GPO_DSPATH%</DSValue>
+                </DSAttributeExpandedString>
+            </DSObject>
+        </GroupPolicyExtension>
+    <GroupPolicyExtension bkp:ID="{F15C46CD-82A0-4C2D-A210-5D0D3182A418}" bkp:DescName="Unknown Extension"><FSObjectDir bkp:Path="%GPO_MACH_FSPATH%\Applications" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Applications" bkp:Location="DomainSysvol\GPO\Machine\Applications"/><FSObjectFile bkp:Path="%GPO_MACH_FSPATH%\comment.cmtx" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\comment.cmtx" bkp:Location="DomainSysvol\GPO\Machine\comment.cmtx"/><FSObjectDir bkp:Path="%GPO_MACH_FSPATH%\Microsoft" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Microsoft" bkp:Location="DomainSysvol\GPO\Machine\Microsoft"/><FSObjectDir bkp:Path="%GPO_MACH_FSPATH%\Microsoft\Windows NT" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Microsoft\Windows NT" bkp:Location="DomainSysvol\GPO\Machine\Microsoft\Windows NT"/><FSObjectDir bkp:Path="%GPO_MACH_FSPATH%\Microsoft\Windows NT\SecEdit" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Microsoft\Windows NT\SecEdit" bkp:Location="DomainSysvol\GPO\Machine\Microsoft\Windows NT\SecEdit"/><FSObjectFile bkp:Path="%GPO_MACH_FSPATH%\Microsoft\Windows NT\SecEdit\GptTmpl.inf" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf" bkp:Location="DomainSysvol\GPO\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf"/><FSObjectDir bkp:Path="%GPO_MACH_FSPATH%\Scripts" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Scripts" bkp:Location="DomainSysvol\GPO\Machine\Scripts"/><FSObjectDir bkp:Path="%GPO_MACH_FSPATH%\Scripts\Shutdown" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Scripts\Shutdown" bkp:Location="DomainSysvol\GPO\Machine\Scripts\Shutdown"/><FSObjectDir bkp:Path="%GPO_MACH_FSPATH%\Scripts\Startup" bkp:SourceExpandedPath="\\vm-dc-neu.mvp.azureblog.pl\sysvol\mvp.azureblog.pl\Policies\{A67CA9F7-A79B-4487-8906-4DF041098D38}\Machine\Scripts\Startup" bkp:Location="DomainSysvol\GPO\Machine\Scripts\Startup"/></GroupPolicyExtension></GroupPolicyObject>
+</GroupPolicyBackupScheme>
