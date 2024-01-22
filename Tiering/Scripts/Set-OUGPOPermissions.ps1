@@ -21,9 +21,11 @@ Get-ADObject -SearchBase ($rootdse.SchemaNamingContext) -LDAPFilter "(schemaidgu
 $extendedrightsmap = @{ }
 Get-ADObject -SearchBase ($rootdse.ConfigurationNamingContext) -LDAPFilter "(&(objectclass=controlAccessRight)(rightsguid=*))" -Properties displayName, rightsGuid | ForEach-Object { $extendedrightsmap[$_.displayName] = [System.GUID]$_.rightsGuid }
 
-if (test-Path -Path $List) {
-    Write-Host "Working with CSV File '$List'" -ForegroundColor Green
-    $List = Import-CSV -Path $List
+if ($List -like "*csv*") {
+    if (Test-Path -Path $List){
+        Write-Host "Working with CSV File '$List'" -ForegroundColor Green
+        $List = Import-CSV -Path $List
+    }
 }
 
 $List | ForEach-Object {

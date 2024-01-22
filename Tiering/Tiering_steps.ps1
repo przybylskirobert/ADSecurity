@@ -71,7 +71,7 @@ $OUs = @(
 #endRegion
 
 #region create Tiering OUs v2 
-$domainOUSCsv = Import-Csv -Path "$ScriptsLocation\DomainOUs.csv"
+$domainOUSCsv = "$ScriptsLocation\DomainOUs.csv"
 .$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $domainOUSCsv    
 #endregion
 

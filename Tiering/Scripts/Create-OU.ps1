@@ -34,9 +34,11 @@ param(
     [parameter(Mandatory = $true)][PSObject] $OUs
 )
 $dNC = (Get-ADRootDSE).defaultNamingContext
-if (test-Path -Path $OUs) {
-    Write-Host "Working with CSV File '$OUs'" -ForegroundColor Green
-    $OUs = Import-CSV -Path $OUs
+if ($OUs -like "*csv*") {
+    if (Test-Path -Path $OUs){
+        Write-Host "Working with CSV File '$OUs'" -ForegroundColor Green
+        $OUs = Import-CSV -Path $OUs
+    }
 }
 
 $OUs | ForEach-Object {

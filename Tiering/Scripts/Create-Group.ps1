@@ -1,10 +1,10 @@
 <#
     .Example
     $csv = Read-Host -Prompt "Please provide full path to Groups csv file"
-    .\Create-Group.ps1 -CSVfile $csv -Verbose
+    .\Create-Group.ps1 List $csv -Verbose
     PS C:\Tools> $csv = Read-Host -Prompt "Please provide full path to Groups csv file"
     Please provide full path to Groups csv file: c:\tools\groups.csv
-    PS C:\Tools> .\Create-Group.ps1 -CSVfile $csv -Verbose
+    PS C:\Tools> .\Create-Group.ps1 List $csv -Verbose
     VERBOSE: Creating new Group 'Tier0ReplicationMaintenance' under 'OU=Groups,OU=Tier0,OU=Admin,DC=azureblog,DC=pl'
     VERBOSE: Creating new Group 'Tier1ServerMaintenance' under 'OU=Groups,OU=Tier1,OU=Admin,DC=azureblog,DC=pl'
     VERBOSE: Creating new Group 'ServiceDeskOperators' under 'OU=Groups,OU=Tier2,OU=Admin,DC=azureblog,DC=pl'
@@ -15,10 +15,16 @@
 
 [CmdletBinding()]
 param(
-        [parameter(Mandatory = $true)][string] $CSVfile
+        [parameter(Mandatory = $true)][PSOBject] $List
 )
 $dNC = (Get-ADRootDSE).defaultNamingContext
-$groups = Import-Csv $CSVfile
+if ($List -like "*csv*") {
+    if (Test-Path -Path $List){
+        Write-Host "Working with CSV File '$List'" -ForegroundColor Green
+        $groups = Import-CSV -Path $List
+    }
+}
+
 foreach ($group in $groups) {
     $groupName = $group.Name
     $groupOUPrefix = $group.OU
