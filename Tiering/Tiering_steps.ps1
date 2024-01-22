@@ -83,9 +83,9 @@ Set-GpInheritance -Target "OU=Devices,OU=Tier2,OU=Admin,$dnc" -IsBlocked Yes | O
 
 #Region create Groups 
 $csv = "$ScriptsLocation\AdminGroups.csv"
-.$ScriptsLocation\Scripts\Create-Group.ps1 -CSVfile $csv
+.$ScriptsLocation\Scripts\Create-Group.ps1 -List $csv
 $csv = "$ScriptsLocation\StandardGroups.csv"
-.$ScriptsLocation\Scripts\Create-Group.ps1 -CSVfile $csv
+.$ScriptsLocation\Scripts\Create-Group.ps1 -List $csv
 #endRegion
 
 #Region Create OU Delegation
