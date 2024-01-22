@@ -13,9 +13,9 @@ redircmp $cmpDN
 #region Sites
 Import-Module ActiveDirectory
 Get-ADObject -SearchBase (Get-ADRootDSE).ConfigurationNamingContext `
--filter "objectclass -eq 'site'" | `
-where-object { $_.Name -eq 'Default-First-Site-Name' } | `
-Rename-ADObject -NewName "HQ"
+    -filter "objectclass -eq 'site'" | `
+    where-object { $_.Name -eq 'Default-First-Site-Name' } | `
+    Rename-ADObject -NewName "HQ"
 $subnet = Read-Host "Please provide subnet details"
 New-ADReplicationSubnet -Name $subnet -Site "HQ"
 #endrgion
@@ -37,7 +37,7 @@ $TemplatePSO.LockoutThreshold = 4
 $name = "AdminsPSO"
 New-ADFineGrainedPasswordPolicy -Instance $TemplatePSO -Name $name -Precedence 50 -Description "The Tiered users Password Policy" -DisplayName "Tiered Users PSO" -MaxPasswordAge "180.00:00:00" -MinPasswordLength 10
 Add-ADFineGrainedPasswordPolicySubject -Identity $name -Subjects `
-"Domain Admins", Tier1ServerMaintenance, tier1admins, Tier1PAWUsers, Tier2ServiceDeskOperators, tier2admins, Tier2WorkstationMaintenance
+    "Domain Admins", Tier1ServerMaintenance, tier1admins, Tier1PAWUsers, Tier2ServiceDeskOperators, tier2admins, Tier2WorkstationMaintenance
 #endregion
 
 #AD Resycle

@@ -1,5 +1,0 @@
-Name,samAccountName,GroupCategory,GroupScope,DisplayName,OU,Description,Membership
-Test Group 1,testgroup1,Security,Global,Test Group 1,"ou=Security Groups,OU=Groups",Group with random members,
-Test Group 2,testgroup2,Security,Global,Test Group 2,"ou=Security Groups,OU=Groups",Group with random members,
-Test Group 3,testgroup3,Security,Global,Test Group 3,"ou=Security Groups,OU=Groups",Group with random members,
-Test Group 4,testgroup4,Security,Global,Test Group 4,"ou=Security Groups,OU=Groups",Group with random members,

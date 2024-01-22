@@ -50,7 +50,7 @@ Set-Location $ScriptsLocation
 #endregion
 
 #region LinkGPO
-   $GpoLinks = @(
+    $GpoLinks = @(
         $(New-Object PSObject -Property @{ Name = "WindowsLAPS_DSRM" ; OU = "OU=Domain Controllers"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "WindowsLAPS" ; OU = "OU=Devices,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
         $(New-Object PSObject -Property @{ Name = "WindowsLAPS" ; OU = "OU=Tier0 Servers,OU=Tier0,OU=Admin"; Order = 1 ;LinkEnabled = 'YES'}),
@@ -59,5 +59,5 @@ Set-Location $ScriptsLocation
         $(New-Object PSObject -Property @{ Name = "WindowsLAPS" ; OU = "OU=Quarantine"; Order = 1 ;LinkEnabled = 'YES'})
     )
     .$ScriptsLocation\Scripts\Link-GpoToOU.ps1 -GpoLinks $GpoLinks
-     cd $location
+    cd $location
 #endregion

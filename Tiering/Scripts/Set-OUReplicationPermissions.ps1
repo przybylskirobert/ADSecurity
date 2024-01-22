@@ -27,6 +27,12 @@ $schemaNC = $rootdse.SchemaNamingContext
 $forestDnsZonesDN = "DC=ForestDnsZones," + $rootdse.RootDomainNamingContext
 $sitesDN = "CN=Sites," + $configCN
 $config = @($configCN, $schemaNC, $forestDnsZonesDN, $sitesDN)
+
+if (test-Path -Path $List) {
+    Write-Host "Working with CSV File '$List'" -ForegroundColor Green
+    $List = Import-CSV -Path $List
+}
+
 $List | ForEach-Object {
     $group = $_.Group
     $adGroup = New-Object System.Security.Principal.SecurityIdentifier (Get-ADGroup -Identity $group).SID

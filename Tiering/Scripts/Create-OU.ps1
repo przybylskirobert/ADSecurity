@@ -31,9 +31,14 @@
 
 [CmdletBinding()]
 param(
-        [parameter(Mandatory = $true)][PSObject] $OUs
+    [parameter(Mandatory = $true)][PSObject] $OUs
 )
 $dNC = (Get-ADRootDSE).defaultNamingContext
+if (test-Path -Path $OUs) {
+    Write-Host "Working with CSV File '$OUs'" -ForegroundColor Green
+    $OUs = Import-CSV -Path $OUs
+}
+
 $OUs | ForEach-Object {
     $name = $_.Name
     $parentOU = $_.ParentOU
@@ -54,6 +59,6 @@ $OUs | ForEach-Object {
         New-ADOrganizationalUnit -Name $name -Path $OUPath -ProtectedFromAccidentalDeletion:$true
     }
     else {
-        Write-Host "OU '$name' already exists under '$ouPath'" -ForegroundColor Yellow
+        Write-Host "OU '$name' already exists under '$ouPath'" -ForegroundColor Red
     }
 }

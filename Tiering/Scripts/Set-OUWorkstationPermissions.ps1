@@ -15,6 +15,12 @@ $rootdse = Get-ADRootDSE
 $domain = Get-ADDomain
 $guidmap = @{ }
 Get-ADObject -SearchBase ($rootdse.SchemaNamingContext) -LDAPFilter "(schemaidguid=*)" -Properties lDAPDisplayName, schemaIDGUID | ForEach-Object { $guidmap[$_.lDAPDisplayName] = [System.GUID]$_.schemaIDGUID }
+
+if (test-Path -Path $List) {
+    Write-Host "Working with CSV File '$List'" -ForegroundColor Green
+    $List = Import-CSV -Path $List
+}
+
 $List | ForEach-Object {
     $ouPrefix = $_.OUPrefix
     $Group = $_.Group

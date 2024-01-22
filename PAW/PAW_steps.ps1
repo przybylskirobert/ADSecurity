@@ -1,19 +1,10 @@
 Throw "this is not a robust file" 
 $location = Get-Location
-$dsnAME = (Get-ADDomain).DistinguishedName
-$dNC = (Get-ADRootDSE).defaultNamingContext
-$domain = $env:USERDNSDOMAIN
 $ScriptsLocation =  "C:\Tools\ADSecurity\PAW"
 Set-Location $ScriptsLocation
 
 Import-Module ActiveDirectory
 
-#Region create Groups 
-    $csv = Read-Host -Prompt "Please provide full path to Admin Groups csv file (without quotation marks)"
-    .$ScriptsLocation\Scripts\Create-Group.ps1 -CSVfile $csv -Verbose
-    $csv = Read-Host -Prompt "Please provide full path to Standard Groups csv file (without quotation marks)"
-    .$ScriptsLocation\Scripts\Create-Group.ps1 -CSVfile $csv -Verbose
-#endRegion
 
 #Region create Users
     $csv = Read-Host -Prompt "Please provide full path to Users csv file (without quotation marks)"
@@ -52,7 +43,7 @@ Import-Module ActiveDirectory
         $(New-Object PSObject -Property @{ Name = "Tier1 PAW Configuration - User PAC" ; OU = "OU=Accounts,OU=Tier1,OU=Admin"; Order = 1 ; LinkEnabled = 'YES' })
     )
     .$ScriptsLocation\Scripts\Link-GpoToOU.ps1 -GpoLinks $GpoLinks -Verbose
-     Set-Location $location
+    Set-Location $location
 
 dsa.msc
 gpmc.msc

@@ -1,8 +1,6 @@
 throw "This is not a robus script"
 $location = Get-Location
-$dsnAME = (Get-ADDomain).DistinguishedName
 $dNC = (Get-ADRootDSE).defaultNamingContext
-$domain = $env:USERDNSDOMAIN
 $ScriptsLocation =  "C:\Tools\ADSecurity\Tiering"
 Set-Location $ScriptsLocation
 
@@ -10,7 +8,7 @@ Import-Module ActiveDirectory
 
 
 
-#region Create Top Level OU's
+#region Create OU's v1
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Admin"; ParentOU = "" }),
     $(New-Object PSObject -Property @{Name = "Groups"; ParentOU = "" }),
@@ -20,9 +18,7 @@ $OUs = @(
     $(New-Object PSObject -Property @{Name = "Quarantine"; ParentOU = "" })
 )
 .$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
-#endRegion 
 
-#region Create Tiering OUs v1
 $OUs = @(
     $(New-Object PSObject -Property @{Name = "Tier0"; ParentOU = "ou=Admin" }),
     $(New-Object PSObject -Property @{Name = "Tier1"; ParentOU = "ou=Admin" }),
@@ -74,7 +70,7 @@ $OUs = @(
 .$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $OUs
 #endRegion
 
-#create Tiering OUs v2 
+#region create Tiering OUs v2 
 $domainOUSCsv = Import-Csv -Path "$ScriptsLocation\DomainOUs.csv"
 .$ScriptsLocation\Scripts\Create-OU.ps1 -OUs $domainOUSCsv    
 #endregion
@@ -91,7 +87,6 @@ $csv = "$ScriptsLocation\AdminGroups.csv"
 $csv = "$ScriptsLocation\StandardGroups.csv"
 .$ScriptsLocation\Scripts\Create-Group.ps1 -CSVfile $csv
 #endRegion
-
 
 #Region Create OU Delegation
 $List = @(
