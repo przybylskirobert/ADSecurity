@@ -3,71 +3,30 @@ $location = Get-Location
 $oldVerbosePreference = $VerbosePreference
 $VerbosePreference = 'Continue'
 Set-Location C:\Tools\AuthPolicy
-
-#Region ProtectedUsers
-$providedgroup = Read-Host "Please provide group that members should be added to other group."
-$groupToUpdate = Read-Host "Please provide group that should be updated with new members from '$providedgroup'"
-$groupMembers = Get-ADGroupMember -Identity  $providedgroup
-foreach ($member in $groupMembers){
-    Write-Verbose "Updating group '$groupToUpdate' with '$member'"
-    Add-ADGroupMember -Identity $groupToUpdate -Members $member
-}
+ #region import GPO
+    $backupPath = "$ScriptsLocation\GPO Backup"
+    $dnsRoot = (get-addomain).DNSRoot
+    $migTable = "gpo_backup_" + $((Get-ADDOmain).NetBIOSName) + ".migtable"
+    $migTablePath = "$ScriptsLocation\Scripts\" + $migTable
+    Copy-Item -Path $ScriptsLocation\Scripts\gpo_backup.migtable -Destination $migTablePath
+    ((Get-Content -path $migTablePath  -Raw) -replace 'CHANGEME', $dnsRoot )| Set-Content -Path $migTablePath 
+    $gPOMigrationTable = (Get-ChildItem -Path "$ScriptsLocation\Scripts\" -Filter "$migTable").fullname
+    .$ScriptsLocation\Scripts\Import-GPO.ps1 -BackupPath $backupPath -GPOMigrationTable $gPOMigrationTable -Verbose
 #endregion
-
-#region Create Tier 1 Servers Group
-$csv = Read-Host -Prompt "Please provide full path to Groups csv file"
-.\Create-Group.ps1 -CSVfile $csv -Verbose
-$srv = Get-ADComputer -Identity srv01
-$group = Get-ADGroup -Identity 'Tier1Servers'
-Write-Verbose "Adding computer '$($srv.name)' to group '$($group.name)'"
-Add-ADGroupMember -Identity $group -Members $srv
-#endregion
-
-#region import GPO
-$BackupPath = Read-Host -Prompt "Please provide full path to GPO backups"
-.\Import-GPO.ps1 -BackupPath $BackupPath -Verbose
-Set-Location C:\Tools\AuthPolicy
-#endregion
-
 
 #region Link gpo
 $GpoLinks = @(
     $(New-Object PSObject -Property @{ Name = "KDC Support for claims"; OU = "OU=Domain Controllers"; Order = 2 ;LinkEnabled = 'YES'}),
     $(New-Object PSObject -Property @{ Name = "Kerberos client support for claims" ; OU = ""; Order = 2 ;LinkEnabled = 'YES'})
 )
-.\Link-GpoToOU.ps1 -GpoLinks $GpoLinks -Verbose
-
-#Region AuthPolicy
-.\New-AuthenticationPolicy -GroupName "Tier1Servers" -PolicyName "Tier1Servers" -Description "Assigned principals can authenticate to tier-0 PAWs only" -UserTGTLifetimeMins 121
-#endregion
-
-#Region ScheduledTask
-.\Register-NewScheduledTask.ps1 -DomainGroup "Tier1PAWMaint" -PolicyName "Tier1Servers"
-Get-ScheduledTask -TaskName "Update_Tier1Servers_Users" | Start-ScheduledTask 
-#endregion
-
-#region EventLog
-$Logs = @(
-    'Microsoft-Windows-Authentication/AuthenticationPolicyFailures-DomainController',
-    'Microsoft-Windows-Authentication/ProtectedUser-Client',
-    'Microsoft-Windows-Authentication/ProtectedUserFailures-DomainController',
-    'Microsoft-Windows-Authentication/ProtectedUserSuccesses-DomainController'
-)
-foreach ($logname in $logs){
-    Write-Verbose "Enabling logs for '$logname'"
-    $log = New-Object System.Diagnostics.Eventing.Reader.EventLogConfiguration $logName
-    $log.IsEnabled=$true
-    $log.SaveChanges()
-}
-#endregion
-
-#region switch Auth Policy to Audit
-Get-ADAuthenticationPolicy -Identity "Tier1Servers" | Set-ADAuthenticationPolicy -Enforce $false
-#endregion
-
-#region switch Auth Policy to Enforce
-Get-ADAuthenticationPolicy -Identity "Tier1Servers" | Set-ADAuthenticationPolicy -Enforce $true
-#endregion
-
-$VerbosePreference = $oldVerbosePreference
+.$ScriptsLocation\Scripts\Link-GpoToOU.ps1 -GpoLinks $GpoLinks -Verbose
 Set-Location $location
+#endregion
+
+
+#region AuthPolicies
+.$ScriptsLocation\Scripts\New-AuthenticationPolicy.ps1 -PolicyName 'Tier0PAW' -ComputersGroupName 'Tier0PAWComputers' -UsersGroupName 'Domain Admins' -OUsToInclude  @("OU=Tier0,OU=Admin","OU=Domain Controllers") -UserTGTLifetimeMins 121
+.$ScriptsLocation\Scripts\New-AuthenticationPolicy.ps1 -PolicyName 'Tier1PAW' -ComputersGroupName 'Tier1PAWComputers' -UsersGroupName 'Tier1PAWUser' -OUsToInclude  @("OU=Tier1,OU=Admin","OU=Tier 1 Servers") -UserTGTLifetimeMins 121
+.$ScriptsLocation\Scripts\New-AuthenticationPolicy.ps1 -PolicyName 'Tier0SyncServers' -ComputersGroupName 'Tier0SyncServers' -UsersGroupName 'Tier0ReplicationMaintenance' -OUsToInclude  @("OU=Synchronisation,OU=Tier0 Servers,OU=Tier0,OU=Admin","OU=Domain Controllers") -UserTGTLifetimeMins 121
+#endRegion
+ 
