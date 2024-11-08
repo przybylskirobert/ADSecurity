@@ -119,11 +119,6 @@ $List = @(
 .$ScriptsLocation\Scripts\Set-OUComputerPermissions.ps1 -list $list
 
 $List = @(
-    $(New-Object PSObject -Property @{Group = "Tier0ReplicationMaintenance"; OUPrefix = "" })
-)
-.$ScriptsLocation\Scripts\Set-OUReplicationPermissions.ps1 -list $list
-
-$List = @(
     $(New-Object PSObject -Property @{Group = "Tier1ServerMaintenance"; OUPrefix = "OU=Tier 1 Servers" })
 )
 .$ScriptsLocation\Scripts\Set-OUGPOPermissions.ps1 -list $list
